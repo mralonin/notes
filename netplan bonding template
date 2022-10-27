@@ -1,0 +1,54 @@
+#With cluster NIC#
+network:
+  bonds:
+    bond0:
+      addresses:
+      - 10.0.0.2/24
+      gateway4: 10.0.0.1
+      interfaces:
+      - eno1
+      - eno2
+      nameservers:
+        addresses:
+        - 8.8.8.8
+      parameters:
+        lacp-rate: fast
+        mode: 802.3ad
+        transmit-hash-policy: layer3+4
+        mii-monitor-interval: 1
+    bond1:
+      addresses:
+      - 10.0.0.3/24
+      interfaces:
+      - eno3
+      - eno4
+  ethernets:
+  ethernets:
+    eno1: {}
+    eno2: {}
+    eno3: {}
+    eno4: {}
+  version: 2
+  
+  #Without Cluster#
+  
+  network:
+  ethernets:
+    eno1:
+      dhcp4: false
+    enp4s0:
+      dhcp4: false
+  version: 2
+  bonds:
+    bond0:
+      addresses:
+      - 10.0.0.2/24
+      gateway4: 10.0.0.1
+      interfaces:
+        - eno1
+        - eno2
+      parameters:
+        mode: 802.3ad
+        transmit-hash-policy: layer3+4
+        lacp-rate: fast
+  
